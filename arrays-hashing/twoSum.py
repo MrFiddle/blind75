@@ -32,6 +32,14 @@ from typing import List
 
 
 def twoSum(nums: List[int], target: int):
-    print(sorted(nums))
+    numMap = {}
 
-twoSum([3,2,4], 6)
+    for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in numMap:
+                return [numMap[complement], i]
+            numMap[nums[i]] = i
+
+    return []  # No solution found
+
+print(twoSum([3,2,4], 6))
