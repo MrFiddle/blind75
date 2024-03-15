@@ -31,7 +31,26 @@
 from typing import List
 
 
-def twoSum(nums: List[int], target: int):
-    print(sorted(nums))
+# Hash table approach:
 
-twoSum([3,2,4], 6)
+
+def twoSum(nums: List[int], target: int):
+
+    # Hash map creation
+    hashMap = {}
+
+    # Loop through num list
+    for i in range(len(nums)):
+        # calculate the complement
+        complement = target - nums[i]
+        if complement in hashMap:
+            return [hashMap[complement], i]
+        
+        hashMap[nums[i]] = i
+
+    return []
+
+numList = [9, 1, 5, 10]
+target = 19
+
+print(twoSum(numList, target))
