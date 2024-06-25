@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
   "editor.defaultFormatter": "esbenp.prettier-vscode"
+=======
+  "editor.defaultFormatter": "ms-python.autopep8"
+>>>>>>> 159a04139bca03d424d066af81820174c9055f88
 }
