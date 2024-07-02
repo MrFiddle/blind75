@@ -1,18 +1,28 @@
-from collections import defaultdict
+from collections import Counter
+import heapq
+
 
 def topKFrequent(nums, k):
 
-    nums_map = defaultdict(list)
+    FqMap = {}
 
-    for i in range (len(nums)):
-        nums_map[nums[i]].append(nums[i])
+    for i in range(len(nums)):
+        if nums[i] not in FqMap:
+            FqMap[nums[i]] = 1
+        else:
+            FqMap[nums[i]] = FqMap[nums[i]] + 1
 
-    sorted_keys = sorted(nums_map, key=lambda x: len(nums_map[x]), reverse=True)
-    longest_lists_keys = sorted_keys[:k]
-    return longest_lists_keys
+    topKElements = []
+
+    for number, frequency in FqMap.items():
+        heapq.heappush(topKElements, (frequency, number))
+
+        if len(topKElements) > k:
+            heapq.heappop(topKElements)
+
+    return [tup[1] for tup in topKElements]
 
 
-nums = [1,1,1,2,2,2,2,3]
-k = 1
-
+nums = [3, 2, 2, 2, 1, 1]
+k = 2
 print(topKFrequent(nums, k))
